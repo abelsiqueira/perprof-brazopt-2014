@@ -3,14 +3,16 @@
 \usepackage{cmap}
 \usepackage[T1]{fontenc}
 \usepackage[english]{babel}
+
 % \usepackage{beamerposter}
 % \usepackage[paperwidth=90cm,paperheight=100cm]{geometry}
 % \geometry{paperwidth=90cm,paperheight=100cm}
-\usepackage{biblatex}
+\usepackage[backend=biber]{biblatex}
+\usepackage{csquotes}
 \addbibresource{references.bib}
 
 \usepackage{url}
-\usepackage{breakurl}
+% \usepackage{breakurl}
 % \usepackage{hyperref}
 
 \usepackage{amsmath}
@@ -21,7 +23,8 @@
 \usepackage{graphicx}
 \usepackage{tikz}
 \usepackage{pgfplots}
-
+\pgfplotsset{compat=1.10}
+\usetikzlibrary{decorations,snakes}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Pacotes: tabelas %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -38,8 +41,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Pacotes: códigos %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \usepackage{textcomp}
 \usepackage{listings}
-\renewcommand\lstlistingname{Código}
-\renewcommand\lstlistlistingname{Lista de Códigos}
+% \renewcommand\lstlistingname{Código}
+% \renewcommand\lstlistlistingname{Lista de Códigos}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Pacotes: index %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
