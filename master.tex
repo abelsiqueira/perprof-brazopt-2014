@@ -1,6 +1,6 @@
 \documentclass[paperwidth=90cm,paperheight=120cm,portrait]{baposter}
-\usepackage[utf8]{inputenc}
 \usepackage{cmap}
+\usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage[english]{babel}
 
@@ -24,7 +24,7 @@
 \usepackage{tikz}
 \usepackage{pgfplots}
 \pgfplotsset{compat=1.10}
-\usetikzlibrary{decorations,snakes}
+\usetikzlibrary{decorations.pathmorphing}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Pacotes: tabelas %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -98,16 +98,21 @@
       % \includegraphics[width=0.08\linewidth]{track_frame_04999_06}
  }
  % Title
- {\sc\Huge perprof-py -- A Python Package for Performance Profile}
+ {\sffamily perprof-py -- A Python Package  for \\[1mm] Performance Profile}
  % Authors
- { Raniere Gaia Costa da Silva, Abel Soares Siqueira, and Luiz Rafael dos Santos \\[1mm]
+ { Raniere Gaia Costa da Silva, Abel Soares Siqueira, and Luiz-Rafael  Santos \\[1mm]
  \smaller \texttt{raniere@ime.unicamp.br, abel.s.siqueira@gmail.com, lrsantos11@gmail.com} }
  % University logo
  {
-  % \begin{tabular}{r}
-  %   \includegraphics[height=0.12\textheight]{logo}\\
-  %   \raisebox{0em}[0em][0em]{\includegraphics[height=0.03\textheight]{msrlogo}}
-  % \end{tabular}
+ % The makebox allows the title to flow into the logo, this is a hack because of the L shaped logo.
+    % \makebox[1em][r]{%
+      \begin{minipage}{16em}
+        \hfill
+        \includegraphics[height=0.06\textheight]{figures/logo-imecc.png}
+        \hspace*{.5cm}
+        \includegraphics[height=0.06\textheight]{figures/logo-unicamp}
+      \end{minipage}
+    % }
  }
 
       
