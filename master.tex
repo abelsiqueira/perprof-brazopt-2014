@@ -1,17 +1,19 @@
-\documentclass[]{beamer}
-\usepackage[utf8]{inputenc}
+\documentclass[paperwidth=90cm,paperheight=120cm,portrait]{baposter}
 \usepackage{cmap}
+\usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage[english]{babel}
-\usepackage{beamerposter}
-\usepackage{geometry}
-\geometry{paperwidth=90cm,paperheight=100cm}
-\usepackage{biblatex}
+
+% \usepackage{beamerposter}
+% \usepackage[paperwidth=90cm,paperheight=100cm]{geometry}
+% \geometry{paperwidth=90cm,paperheight=100cm}
+\usepackage[backend=biber]{biblatex}
+\usepackage{csquotes}
 \addbibresource{references.bib}
 
 \usepackage{url}
-\usepackage{breakurl}
-\usepackage{hyperref}
+% \usepackage{breakurl}
+% \usepackage{hyperref}
 
 \usepackage{amsmath}
 \usepackage{amsfonts}
@@ -21,28 +23,31 @@
 \usepackage{graphicx}
 \usepackage{tikz}
 \usepackage{pgfplots}
+\pgfplotsset{compat=1.10}
+\usetikzlibrary{decorations.pathmorphing}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Pacotes: tabelas %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\usepackage{multicol}
-\usepackage{multirow}
+% \usepackage{multicol}
+% \usepackage{multirow}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%% Pacotes: algoritmos %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\usepackage{algorithmic}
-\usepackage{algorithm}
-\floatname{algorithm}{Algoritmo}
-\renewcommand{\listalgorithmname}{Lista de Algoritmos}
+% \usepackage{algorithmic}
+% \usepackage{algorithm}
+% \floatname{algorithm}{Algoritmo}
+% \renewcommand{\listalgorithmname}{Lista de Algoritmos}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Pacotes: códigos %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \usepackage{textcomp}
 \usepackage{listings}
-\renewcommand\lstlistingname{Código}
-\renewcommand\lstlistlistingname{Lista de Códigos}
+% \renewcommand\lstlistingname{Código}
+% \renewcommand\lstlistlistingname{Lista de Códigos}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Pacotes: index %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\usepackage{makeidx}
-\makeindex
+% \usepackage{makeidx}
+% \makeindex
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Pacotes: fontes %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -50,40 +55,69 @@
 \usepackage{mathrsfs}
 
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Pacotes: LRS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%For Multicols
+\usepackage{multicol}
+% For Smaller
+\usepackage{relsize} 
+
+
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Início do poster %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\usetheme{Copenhagen}
-\setbeamertemplate{headline}{}
-\setbeamertemplate{footline}{}
+% \usetheme{Copenhagen}
+% \setbeamertemplate{headline}{}
+% \setbeamertemplate{footline}{}
 \begin{document}
-\begin{frame}[t,fragile]
-  \begin{center}
-    \begin{huge}
-      perprof-py -- A Python Package for Performance Profile
-    \end{huge}
 
-    \vspace{40pt}
-    \begin{Large}
-      \begin{tabular}[]{c}
-        Raniere Gaia Costa da Silva \\
-        \url{raniere@ime.unicamp.br}
-      \end{tabular} \hspace{5cm}
-      \begin{tabular}[]{c}
-        Abel Soares Siqueira \\
-        \url{abel.s.siqueira@gmail.com}
-      \end{tabular} \hspace{5cm}
-      \begin{tabular}[]{c}
-        Luiz Rafael dos Santos \\
-        \url{lrsantos11@gmail.com}
-      \end{tabular}
-    \end{Large}
-  \end{center}
-  \vspace{40pt}
 
+\begin{poster}{
+ % Show grid to help with alignment
+ grid=false,
+ % Column spacing
+ % colspacing=0.7em,
+ % Color style
+ headerColorOne=cyan!20!white!90!black,
+ borderColor=cyan!30!white!90!black,
+% Eye Catcher
+ % eyecatcher=false,
+ % Format of textbox
+ % textborder=faded,
+ % Format of text header
+ headerborder=open,
+ headershape=roundedright,
+ headershade=plain,
+ background=none,
+ bgColorOne=cyan!10!white,
+ headerheight=0.12\textheight}
+ % Eye Catcher
+ % NO EYECATCHER
+ {
+      % \includegraphics[width=0.08\linewidth]{track_frame_00010_06}
+      % \includegraphics[width=0.08\linewidth]{track_frame_00450_06}
+      % \includegraphics[width=0.08\linewidth]{track_frame_04999_06}
+ }
+ % Title
+ {\sffamily perprof-py -- A Python Package  for \\[1mm] Performance Profile}
+ % Authors
+ { Raniere Gaia Costa da Silva, Abel Soares Siqueira, and Luiz-Rafael  Santos \\[1mm]
+ \smaller \texttt{raniere@ime.unicamp.br, abel.s.siqueira@gmail.com, lrsantos11@gmail.com} }
+ % University logo
+ {
+ % The makebox allows the title to flow into the logo, this is a hack because of the L shaped logo.
+    % \makebox[1em][r]{%
+      \begin{minipage}{16em}
+        \hfill
+        \includegraphics[height=0.06\textheight]{figures/logo-imecc.png}
+        \hspace*{.5cm}
+        \includegraphics[height=0.06\textheight]{figures/logo-unicamp}
+      \end{minipage}
+    % }
+ }
+
+      
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Corpo do poster %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% O ambiente columns é definido na classe beamer.
-  \begin{columns}[t]
-    \begin{column}{0.4\textwidth}
-      \begin{block}{Abstract}
+      \begin{posterbox}[name=intro,column=0,row=0,span=1]{Introduction}
         Benchmarking optimization packages are very important in optimization
         field, not only because it is one of the way to compare packages, but also
         to uncover deficiencies that could be overlooked. During benchmarking, one
@@ -93,19 +127,11 @@
         to large amount of data. Therefore, researchers started testing tools to
         better process and understand this data.  One of the most widespread ways
         to do so is using Performance Profile graphics proposed by
-        \citeauthor{Dolan2001}.
+        \textcite{Dolan2001}.
+       \end{posterbox}
 
-        In this context, we implemented a free software that makes Performance
-        Profile using data provided by user in a friendly manner. This software
-        produces graphics in PDF using LaTeX with PGF/TikZ\nocite{TikZ} and
-        pgfplots\nocite{pgfplots} packages, in PNG using
-        matplotlib\nocite{Hunter:2007} and can also be easily extended to use with
-        other plot library. The software is implemented in Python3 with support
-        for internationalization and is available on
-        \url{https://github.com/abelsiqueira/perprof-py}.
-      \end{block}
+       \begin{posterbox}[name=perprof,below=intro]{Performance Profile}  
 
-      \begin{block}{Performance Profile}
         The performance profile for a solver is the cumulative distribution
         function for a performance metric, e.g, CPU time, number of functions
         evaluations, number of iterations and so on.
@@ -132,9 +158,20 @@
         analyse, it be relatively insensitive to changes in results on a small
         number of problems and also largely unaffected by small changes in
         results over many problems.
-      \end{block}
+        \end{posterbox}
 
-      \begin{block}{Features}
+       \begin{posterbox}[name=perprof-py,below=perprof] {perprof-py}
+       We implemented a free software that makes Performance
+        Profile using data provided by user in a friendly manner. This software
+        produces graphics in PDF using LaTeX with PGF/TikZ\nocite{TikZ} and
+        pgfplots\nocite{pgfplots} packages, in PNG using
+        matplotlib\nocite{Hunter:2007} and can also be easily extended to use with
+        other plot library. The software is implemented in Python3 with support
+        for internationalization and is available on
+        \url{https://github.com/abelsiqueira/perprof-py}.
+      \end{posterbox}
+
+    \begin{posterbox}[name=features,below=perprof-py]{Features}
         Some of perprof-py features are:
         \begin{itemize}
           \item output LaTeX code,
@@ -142,13 +179,14 @@
           \item options to treat some problems (e.g. spend time equals to
             zero),
           \item native internationalization support.
+
+          \item Can be used in external tools that support Python
         \end{itemize}
 
-        Beside the previous features, the package can be easily used in a range
-        of external tools that support Python.
-      \end{block}
+    \end{posterbox}
 
-      \begin{block}{Input file}
+ \begin{posterbox}[name=inputfile,column=1,span=2]{Input File}  
+    %   \begin{block}{Input file}
         For every solver to be included in the benchmark there must be a file like
         the sample below:
 
@@ -160,38 +198,38 @@
         \end{lstlisting}
 
         Each file has 6 columns that means, in order:
-        \begin{itemize}
+        \begin{multicols}{2} 
+          
+        \begin{enumerate}
           \item The name of the problem;
           \item Exit flag;
           \item Time spent;
           \item Objective function value;
           \item Primal infeasibility;
           \item Dual infeasibility.
-        \end{itemize}
-      \end{block}
-    \end{column}
-    \begin{column}{0.4\textwidth}
-      \begin{block}{Output}
+        \end{enumerate}
+        \end{multicols} 
+      % \end{block}
+    % \end{column}
+   \end{posterbox}
+       \begin{posterbox}[name=output,column=1,span=2,below=inputfile]{Output Example}
         \input{abc-semilog}
-      \end{block}
+       \end{posterbox}
 
-      \begin{block}{Future works}
-        We have plans to extend perprof to also make data profiles as define by
-        \citeauthor{More2009}.
-      \end{block}
+      \begin{posterbox}[name=future,column=1,below=output,span=2]{Future works}
+         We have plans to extend perprof to also make data profiles as define by
+         \textcite{More2009}.
+       \end{posterbox}
 
-      \textbf{References}
+    %   \textbf{References}
 
-      \printbibliography
-    \end{column}
-  \end{columns}
-  \vfill
-  \begin{center}
-    \begin{tabular}[]{cc}
-      \multirow{2}{*}{\includegraphics[height=60pt]{figures/cc-by}} &
-      \Large{This work is licensed under a}\\ &
-      \Large{Creative Commons Attribution 3.0 Unported License.}
-    \end{tabular}
-  \end{center}
-\end{frame}
+\begin{posterbox}[name=references,span=2,column=1,below=future]{References}
+\smaller                          % Make the whole text smaller
+        \printbibliography[heading=none]
+
+\end{posterbox}
+   
+
+\end{poster}
 \end{document}
+% 
